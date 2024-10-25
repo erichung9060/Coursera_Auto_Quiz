@@ -133,6 +133,7 @@ async function processing_questions() {
             if (DBAnswer) {
                 console.log("Store Q" + (i + 1) + " by DB");
                 await setStorageData(Statements[i], DBAnswer);
+                continue;
             }
         }
         if (storageData) continue;
