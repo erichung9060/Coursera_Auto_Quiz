@@ -135,7 +135,13 @@ const observer = new MutationObserver(async () => {
         console.log(UserChoice)
         console.log(Feedback)
         console.log(Url)
-        chrome.runtime.sendMessage({ header: "sent questions", Statements: Statements, Options: Options, MultiChoice: MultiChoice, UserChoice: UserChoice, Feedback: Feedback, Url: Url });
+        
+        try {
+            chrome.runtime.sendMessage({ header: "sent questions", Statements: Statements, Options: Options, MultiChoice: MultiChoice, UserChoice: UserChoice, Feedback: Feedback, Url: Url });
+        } catch (error) {
+            console.log(error)
+        }
+
         debounceTimeout = null;
     }, 1000);
 });

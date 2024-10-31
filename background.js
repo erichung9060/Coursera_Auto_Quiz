@@ -134,6 +134,8 @@ async function processing_questions() {
                 console.log("Store Q" + (i + 1) + " by DB");
                 await setStorageData(Statements[i], DBAnswer);
                 continue;
+            }else{
+                console.log("Not found in DB");
             }
         }
         if (storageData) continue;
