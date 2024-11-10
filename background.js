@@ -36,10 +36,6 @@ function setStorageData(key, data) {
     });
 }
 
-function deleteCurrent() {
-    chrome.storage.local.remove(Statements);
-}
-
 function sameArray(arr1, arr2) {
     if (!Array.isArray(arr1) || !Array.isArray(arr2)) return false;
     if (arr1.length !== arr2.length) return false;
@@ -71,7 +67,6 @@ function emptyArray(arr) {
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (API_KEY == "Your_Gooele_Gemini_API_Key") useAIanswer = false;
@@ -253,8 +248,6 @@ async function processing_answers() {
         console.log("reset answer")
     }, 3000);
 }
-
-
 
 async function askAI(statement, options, multichoice, retry = 1) {
     let message = statement + "\n"
