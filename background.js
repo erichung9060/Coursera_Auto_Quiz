@@ -76,7 +76,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (API_KEY == "Your_Gooele_Gemini_API_Key") useAIanswer = false;
     else useAIanswer = true;
 
-    if (DB_Address == "Your_DB_Address") useDBanswer = false;
+    if (DB_API_URL == "Your_DB_Address") useDBanswer = false;
     else useDBanswer = true;
 
     if (request.header == "sent questions") {
@@ -330,14 +330,14 @@ async function askAI(statement, options, multichoice, retry = 1) {
 
 async function queryDB(statement) {
     try {
-        const response = await fetch(`${DB_Address}/query`, {
+        const response = await fetch(`${DB_API_URL}/query`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 question: statement,
-                password: DB_Password,
+                password: DB_PASSWORD,
                 url: Url
             }),
             signal: AbortSignal.timeout(3000)
@@ -362,7 +362,7 @@ async function queryDB(statement) {
 
 async function insertDB(statement, answer) {
     try {
-        const response = await fetch(`${DB_Address}/insert`, {
+        const response = await fetch(`${DB_API_URL}/insert`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -370,7 +370,7 @@ async function insertDB(statement, answer) {
             body: JSON.stringify({
                 question: statement,
                 answer: JSON.stringify(answer),
-                password: DB_Password,
+                password: DB_PASSWORD,
                 url: Url
             }),
             signal: AbortSignal.timeout(3000)
