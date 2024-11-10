@@ -76,7 +76,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (API_KEY == "Your_Gooele_Gemini_API_Key") useAIanswer = false;
     else useAIanswer = true;
 
-    if (DB_API_URL == "Your_DB_Address") useDBanswer = false;
+    if (DB_API_URL == "Your_DB_API_URL") useDBanswer = false;
     else useDBanswer = true;
 
     if (request.header == "sent questions") {
