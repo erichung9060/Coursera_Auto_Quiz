@@ -3,9 +3,10 @@ var Options = []
 var Feedback = []
 var MultiChoice = []
 var UserChoice = []
+var Url = ""
+
 var useAIanswer = false
 var useDBanswer = false
-var Url = ""
 
 importScripts('config.js');
 
