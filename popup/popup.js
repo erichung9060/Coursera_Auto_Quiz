@@ -232,3 +232,25 @@ function autofill(Statements, submit) {
         }, 1000);
     }
 }
+
+// Add this at the start of your popup.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "triggerFill") {
+        const fillButton = document.getElementById('fillandsubmit');
+        if (fillButton) fillButton.click();
+    }
+});
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "autoComplete") {
+        const button = document.getElementById('complete');
+        if (button) button.click();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var startButton = document.getElementById('complete');
+
+    startButton.addEventListener('click', function() {
+        chrome.runtime.sendMessage({action: "getDoc"}, function(response) {});
+    }, false);
+}, false);
