@@ -383,3 +383,15 @@ async function insertDB(statement, answer) {
         console.error('Error:', error);
     }
 }
+
+chrome.commands.onCommand.addListener((command) => {
+    if (command === "open_popup") {
+        // Open the popup
+        chrome.action.openPopup();
+        
+        // Send a message to the popup after a brief delay
+        setTimeout(() => {
+            chrome.runtime.sendMessage({ action: "triggerFill" });
+        }, 100);
+    }
+});

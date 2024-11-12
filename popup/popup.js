@@ -232,3 +232,11 @@ function autofill(Statements, submit) {
         }, 1000);
     }
 }
+
+// Add this at the start of your popup.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "triggerFill") {
+        const fillButton = document.getElementById('fillandsubmit');
+        if (fillButton) fillButton.click();
+    }
+});
