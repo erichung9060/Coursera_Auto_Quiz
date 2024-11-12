@@ -384,6 +384,21 @@ async function insertDB(statement, answer) {
     }
 }
 
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action == "getDoc"){
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: "getHTML" ,tab_id:tabs[0].id}, (response) => {
+                console.log(response);
+            });
+          });
+          sendResponse("ok");
+    }
+    return true;
+});
+
+
+
 chrome.commands.onCommand.addListener((command) => {
     if (command === "open_popup") {
         // Open the popup
@@ -392,6 +407,17 @@ chrome.commands.onCommand.addListener((command) => {
         // Send a message to the popup after a brief delay
         setTimeout(() => {
             chrome.runtime.sendMessage({ action: "triggerFill" });
+        }, 100);
+    }
+});
+chrome.commands.onCommand.addListener((command) => {
+    if (command === "auto_complete_video_reading") {
+        // Open the popup
+        chrome.action.openPopup();
+        
+        // Send a message to the popup after a brief delay
+        setTimeout(() => {
+            chrome.runtime.sendMessage({ action: "autoComplete" });
         }, 100);
     }
 });

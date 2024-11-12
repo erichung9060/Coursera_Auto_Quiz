@@ -14,7 +14,8 @@
                 "https://www.coursera.org/*"
             ],
             "js": [
-                "content.js"
+                "content.js",
+                "config.js"
             ]
         }
     ],
@@ -41,6 +42,13 @@
                 "mac": "Command+Shift+0"
             },
             "description": "Open popup and autofill"
+        },
+        "auto_complete_video_reading": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+1",
+                "mac": "Command+Shift+1"
+            },
+            "description": "Auto complete video and reading"
         }
     }
 }

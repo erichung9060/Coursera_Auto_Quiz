@@ -240,3 +240,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (fillButton) fillButton.click();
     }
 });
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "autoComplete") {
+        const button = document.getElementById('complete');
+        if (button) button.click();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var startButton = document.getElementById('complete');
+
+    startButton.addEventListener('click', function() {
+        chrome.runtime.sendMessage({action: "getDoc"}, function(response) {});
+    }, false);
+}, false);
