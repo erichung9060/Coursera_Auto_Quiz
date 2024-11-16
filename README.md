@@ -20,3 +20,7 @@
 
 ## Troubleshooting
 1. If the suggested answers don't show on the pop-up page within 3 seconds, please reload the page.
+
+## TODO
+1. Add a delay when user clicks Fill or Submit until all questions get the respone from AI.
+2. Automatically retrive the answer instead of loading the view-feedback page.
