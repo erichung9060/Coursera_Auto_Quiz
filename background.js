@@ -311,11 +311,11 @@ async function askAI(statement, options, multichoice, retry = 1) {
     } catch (error) {
         console.error('Error:', error);
 
-        if (retry >= 5) {
+        if (retry >= 2) {
             if (multichoice == 'fill-in') options = ["unknown"]
             return options;
         } else {
-            await delay(retry * 2000);
+            await delay(retry * 1000);
             return await askAI(statement, options, multichoice, retry + 1);
         }
 
