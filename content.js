@@ -155,6 +155,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === 'getHTML') {
       var videoItemId = [];
       var readingItemId = [];
+      var ungradedLabItemId = [];
       var dict = {};
       document.querySelectorAll('[data-testid="named-item-list-list"]').forEach(function (aa) {
         aa.querySelectorAll('li').forEach(function (a) {
@@ -176,6 +177,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           }
           if (dict.href.split('/')[3] === 'supplement') {
             readingItemId.push(dict.href.split('/')[4]);
+          }
+          if (dict.href.split('/')[3] === 'ungradedLab') {
+            ungradedLabItemId.push(dict.href.split('/')[4]);
           }
         });
       });
@@ -251,6 +255,36 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
           .then((response) => response.json())
           .then((data) => console.log(data))
           .catch((error) => console.error('Error:', error));
+      });
+      ungradedLabItemId.forEach((id) => {
+        const workspaceId = `${userId}~${courseId}~${id}`;
+        fetch(`https://www.coursera.org/api/onDemandLearnerWorkspaces.v1/?action=launch&id=${workspaceId}`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            authority: 'www.coursera.org',
+            accept: '*/*',
+            'accept-language': 'en',
+            'cache-control': 'no-cache',
+            'content-type': 'application/json; charset=UTF-8',
+            dnt: '1',
+            origin: 'https://www.coursera.org',
+            pragma: 'no-cache',
+            referer: '',
+            'sec-ch-ua': '"Not A(Brand";v="99", "Microsoft Edge";v="121", "Chromium";v="121"',
+            'sec-ch-ua-mobile': '?1',
+            'sec-ch-ua-platform': '"Android"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'user-agent':
+              'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36 Edg/121.0.0.0',
+          },
+          body: JSON.stringify({
+            action: 'launch',
+            id: workspaceId,
+          }),
+        });
       });
       sendResponse('ok');
       setTimeout(function () {
