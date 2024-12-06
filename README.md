@@ -1,4 +1,5 @@
 ## How to use
+
 ### Quiz Auto Fill
 1. Download this repository and unzip it.
 2. (Optional) Create an API key from [here](https://aistudio.google.com/app/apikey) and paste it into config.js. This will allow the extension to use AI answers to improve the accuracy rate.
@@ -24,3 +25,8 @@
 ## TODO
 1. Add a delay when user clicks Fill or Submit until all questions get the respone from AI.
 2. Automatically retrive the answer instead of loading the view-feedback page.
+
+## Contributors
+
+1. Thanks, [Owen](https://github.com/owenowenisme), for merging the [Coursera-Auto-Complete](https://github.com/owenowenisme/Coursera-Auto-Complete).
+2. Thanks, [Peter](https://github.com/peterxcli), for developing support for auto-completing ungraded lab items.
