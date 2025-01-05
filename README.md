@@ -9,7 +9,7 @@
 
 ### Video & Reading Auto-Complete
 1. Find your UserId by following the instruction in [config.js](./config.js)
-2. Open Coursera pages containing videos or reading lists, such as the example shown above.
+2. Open Coursera pages containing videos or reading lists, such as the example shown below.
 ![image](https://i.imgur.com/2jAwILD.png)
 1. use `Cmd + Shift + 1` to trigger auto-complete videos and readings, or click the corresponding button in the extension.
 
