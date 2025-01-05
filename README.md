@@ -5,7 +5,7 @@
 2. (Optional) Create an API key from [here](https://aistudio.google.com/app/apikey) and paste it into config.js. This will allow the extension to use AI answers to improve the accuracy rate.
 3. (Optional) Build your own database using MongoDB and using Node.js to run a web API([Source code](https://github.com/erichung9060/Coursera_MongoDB_Web_API)). After that, paste the web API address and password into config.js.
 4. Load the extension into Chrome (chrome://extensions/)
-5. Go go a Coursera quiz page and open the extension. You will see suggested answers. You can click either `Fill` to select the options or `Fill and Submit` to automatically select and submit the answers. Alternatively, you can trigger it by `Cmd + Shift + 0`.
+5. Go go a Coursera quiz page and open the extension. You will see suggested answers. You can click either `Fill` to auto select the options or `Fill and Submit` to auto select and submit the answers. Alternatively, you can trigger it by `Cmd + Shift + 0`.
 
 ### Video & Reading Auto-Complete
 1. Find your UserId by following the instruction in [config.js](./config.js)
