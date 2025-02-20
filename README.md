@@ -30,3 +30,5 @@
 ## TODO
 1. Add a delay after user clicks Fill or Submit until all questions receive a response from the AI.
 2. Automatically retrive the answer instead of loading the view-feedback page.
+
+Contributions are welcome! If you'd like to help improve this extension, feel free to submit a PR.
